@@ -46,9 +46,15 @@
 
     /* WORK PAGE */
     #page-work { padding-top: 7rem; }
-    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-    @media (max-width: 768px) { .work-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 480px) { .work-grid { grid-template-columns: 1fr; } }
+
+    /* Thumbnail grid — only contains .work-item elements */
+    .work-thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+    @media (max-width: 768px) { .work-thumb-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .work-thumb-grid { grid-template-columns: 1fr; } }
 
     .work-item { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; background: #111; }
     .work-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
@@ -60,8 +66,8 @@
     .work-item:hover .open-indicator { opacity: 1; }
     .work-item.open .open-indicator { opacity: 1; transform: rotate(45deg); }
 
-    /* Gallery panel — spans full grid width */
-    .gallery-panel { grid-column: 1 / -1; max-height: 0; overflow: hidden; transition: max-height 0.7s cubic-bezier(0.25,0.46,0.45,0.94); background: #0f0f0f; }
+    /* Gallery panel — lives OUTSIDE the thumb grid, full width */
+    .gallery-panel { max-height: 0; overflow: hidden; transition: max-height 0.7s cubic-bezier(0.25,0.46,0.45,0.94); background: #0f0f0f; }
     .gallery-panel.open { max-height: 3000px; }
     .gallery-inner { padding: 3px 0; columns: 3; column-gap: 3px; }
     @media (max-width: 768px) { .gallery-inner { columns: 2; } }
@@ -133,7 +139,7 @@
 <div id="page-home" class="page active">
   <div class="home-grid">
     <div class="home-grid-item"><img src="images/friends-of-ham/DSC04552.jpg" alt="Friends of Ham" loading="lazy"/><div class="overlay"><span>Friends of Ham</span></div></div>
-    <div class="home-grid-item"><img src="images/galipette/galipette-cidre.gif" alt="Galipette" loading="lazy"/><div class="overlay"><span>Galipette</span></div></div>
+    <div class="home-grid-item"><img src="images/galipette/Galipette-StopMotion-Mirror_4k-song2-ezgif.com-video-to-gif-converter.gif" alt="Galipette" loading="lazy"/><div class="overlay"><span>Galipette</span></div></div>
     <div class="home-grid-item"><img src="images/friends-of-ham/DSC04515.jpg" alt="Friends of Ham" loading="lazy"/><div class="overlay"><span>Friends of Ham</span></div></div>
     <div class="home-grid-item"><img src="images/galipette-cidre/Spingingbottle2-HD.gif" alt="Galipette Cidre" loading="lazy"/><div class="overlay"><span>Galipette Cidre</span></div></div>
     <div class="home-grid-item"><img src="images/friends-of-ham/DSC02713.jpg" alt="Friends of Ham" loading="lazy"/><div class="overlay"><span>Friends of Ham</span></div></div>
@@ -158,407 +164,279 @@
   <footer class="site-footer">
     <div><h4>About</h4><p>Food photographers and content creators working with brands and restaurants to capture stories. Specialising in art direction, photography styling, and animated content for web and social media.</p></div>
     <div><h4>Follow</h4><a href="https://www.instagram.com/clawsimage" target="_blank" rel="noopener">Instagram</a><a href="https://www.behance.net/clawsimage" target="_blank" rel="noopener">Behance</a></div>
-    <div><h4>Contact</h4><p>London · Leeds · Yorkshire</p><a href="mailto:claudiayitaklawrence@gmail.com">claudiayitaklawrence@gmail.com</a><a href="https://wa.me/message/SMGCFNEACSWMI1" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+    <div><h4>Contact</h4><p>London · Leeds · Yorkshire</p><a href="/cdn-cgi/l/email-protection#bad9d6dbcfded3dbc3d3cedbd1d6dbcdc8dfd4d9dffaddd7dbd3d694d9d5d7"><span class="__cf_email__" data-cfemail="57343b3622333e362e3e23363c3b3620253239343217303a363e3b7934383a">[email&#160;protected]</span></a><a href="https://wa.me/message/SMGCFNEACSWMI1" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
   </footer>
 </div>
 
 <!-- ══════ WORK ══════ -->
 <div id="page-work" class="page">
-  <div class="work-grid">
 
-    <!-- FRIENDS OF HAM -->
-    <div class="work-item" onclick="toggleGallery('friends-of-ham',this)">
+  <!-- ALL THUMBNAILS in one clean grid -->
+  <div class="work-thumb-grid">
+    <div class="work-item" onclick="toggleGallery('friends-of-ham',this)"><img src="images/friends-of-ham/DSC04552.jpg" alt="Friends of Ham" loading="lazy"/><div class="work-item-label"><h3>Friends of Ham</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('galipette',this)"><img src="images/galipette/DSC06991.jpg" alt="Galipette" loading="lazy"/><div class="work-item-label"><h3>Galipette</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('mama-li',this)"><img src="images/mama-li/Mama Li Jan - Pro-Capture One 1141.jpg" alt="Mama Li" loading="lazy"/><div class="work-item-label"><h3>Mama Li</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('laam-owt',this)"><img src="images/laam-owt/DSC04991.jpg" alt="Laam x OWT" loading="lazy"/><div class="work-item-label"><h3>Laam × OWT</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('chabuddy-sobe',this)"><img src="images/chabuddy-sobe/SoBe Burger - Chabuddy GDSC02869.jpg" alt="Chabuddy G x SoBe Burger" loading="lazy"/><div class="work-item-label"><h3>Chabuddy G × SoBe Burger</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('owt',this)"><img src="images/owt/editied top shadow-6.jpg" alt="OWT" loading="lazy"/><div class="work-item-label"><h3>OWT</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('ritz-crackers',this)"><img src="images/ritz-crackers/DSC05988 - edit.png" alt="Ritz Crackers" loading="lazy"/><div class="work-item-label"><h3>Ritz Crackers</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('galipette-cidre',this)"><img src="images/galipette-cidre/Spingingbottle3-ezgif.com-video-to-gif-converter.gif" alt="Galipette Cidre" loading="lazy"/><div class="work-item-label"><h3>Galipette Cidre</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('little-bao-boy',this)"><img src="images/little-bao-boy/Hero 1.jpg" alt="Little Bao Boy" loading="lazy"/><div class="work-item-label"><h3>Little Bao Boy</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('shop-cuvee',this)"><img src="images/shop-cuvee/DSC06288.jpg" alt="Shop Cuvée" loading="lazy"/><div class="work-item-label"><h3>Shop Cuvée</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('laam',this)"><img src="images/laam/DSC08396.jpg" alt="Laam" loading="lazy"/><div class="work-item-label"><h3>Laam</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('sobe-burger',this)"><img src="images/sobe-burger/SoBe Burger  1879.jpg" alt="SoBe Burger" loading="lazy"/><div class="work-item-label"><h3>SoBe Burger</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('mikos-gyros',this)"><img src="images/mikos-gyros/Pro-Capture One 2352.jpg" alt="Mikos Gyros" loading="lazy"/><div class="work-item-label"><h3>Mikos Gyros</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('hoko',this)"><img src="images/hoko/IMG_2966-2.jpg" alt="HOKO" loading="lazy"/><div class="work-item-label"><h3>HOKO</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('top-cuvee',this)"><img src="images/top-cuvee/DSC06397.jpg" alt="Top Cuvée" loading="lazy"/><div class="work-item-label"><h3>Top Cuvée</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('eat-your-greens',this)"><img src="images/eat-your-greens/DSC03017-2.jpg" alt="Eat Your Greens" loading="lazy"/><div class="work-item-label"><h3>Eat Your Greens</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('brown-and-blond',this)"><img src="images/brown-and-blond/editied top shadow-7.jpg" alt="Brown & Blond" loading="lazy"/><div class="work-item-label"><h3>Brown &amp; Blond</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('poco',this)"><img src="images/poco/DSC01729 - espresso.jpg" alt="POCO" loading="lazy"/><div class="work-item-label"><h3>POCO</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('ichi-sushi',this)"><img src="images/ichi-sushi/DSC01488.JPG.jpg" alt="Ichi Sushi" loading="lazy"/><div class="work-item-label"><h3>Ichi Sushi</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('owt-leeds',this)"><img src="images/owt-leeds/DSC09266.jpg" alt="OWT Leeds" loading="lazy"/><div class="work-item-label"><h3>OWT Leeds</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('fika-north',this)"><img src="images/fika-north/DSC02889.jpg" alt="Fika North" loading="lazy"/><div class="work-item-label"><h3>Fika North</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('ride-and-grind',this)"><img src="images/ride-and-grind/editied top shadow-1.jpg" alt="Ride & Grind" loading="lazy"/><div class="work-item-label"><h3>Ride &amp; Grind</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('love-for-mushroom',this)"><img src="images/love-for-mushroom/DSC03779-3.jpg" alt="Love for Mushroom" loading="lazy"/><div class="work-item-label"><h3>Love for Mushroom</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('ride-and-grind-coffee',this)"><img src="images/ride-and-grind-coffee/editied top shadow-3.jpg" alt="Ride & Grind Coffee" loading="lazy"/><div class="work-item-label"><h3>Ride &amp; Grind Coffee</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('waitrose',this)"><img src="images/waitrose/1713613865794-eacfc688-77c4-4b77-92aa-62c7117eaad6_1.jpg" alt="Waitrose Magazine" loading="lazy"/><div class="work-item-label"><h3>Waitrose Magazine</h3></div><div class="open-indicator">+</div></div>
+    <div class="work-item" onclick="toggleGallery('casa-coffee',this)"><img src="images/casa-coffee/DSC04092-3.jpg" alt="Casa Coffee" loading="lazy"/><div class="work-item-label"><h3>Casa Coffee</h3></div><div class="open-indicator">+</div></div>
+  </div>
+
+  <!-- ALL GALLERY PANELS below the grid, full width -->
+  <div class="gallery-panel" id="gallery-friends-of-ham">
+    <div class="gallery-inner">
       <img src="images/friends-of-ham/DSC04552.jpg" alt="Friends of Ham" loading="lazy"/>
-      <div class="work-item-label"><h3>Friends of Ham</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/friends-of-ham/DSC04515.jpg" alt="Friends of Ham" loading="lazy"/>
+      <img src="images/friends-of-ham/DSC04563.jpg" alt="Friends of Ham" loading="lazy"/>
+      <img src="images/friends-of-ham/DSC04598.jpg" alt="Friends of Ham" loading="lazy"/>
+      <img src="images/friends-of-ham/DSC02713.jpg" alt="Friends of Ham" loading="lazy"/>
+      <img src="images/friends-of-ham/DSC02725.jpg" alt="Friends of Ham" loading="lazy"/>
+      <img src="images/friends-of-ham/editied top shadow-5.jpg" alt="Friends of Ham" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-friends-of-ham">
-      <div class="gallery-inner">
-        <img src="images/friends-of-ham/DSC04552.jpg" alt="Friends of Ham" loading="lazy"/>
-        <img src="images/friends-of-ham/DSC04515.jpg" alt="Friends of Ham" loading="lazy"/>
-        <img src="images/friends-of-ham/DSC04563.jpg" alt="Friends of Ham" loading="lazy"/>
-        <img src="images/friends-of-ham/DSC04598.jpg" alt="Friends of Ham" loading="lazy"/>
-        <img src="images/friends-of-ham/DSC02713.jpg" alt="Friends of Ham" loading="lazy"/>
-        <img src="images/friends-of-ham/DSC02725.jpg" alt="Friends of Ham" loading="lazy"/>
-        <img src="images/friends-of-ham/editied top shadow-5.jpg" alt="Friends of Ham" loading="lazy"/>
-        <!-- ADD MORE: copy a line above, change the filename -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('friends-of-ham',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('friends-of-ham',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- GALIPETTE -->
-    <div class="work-item" onclick="toggleGallery('galipette',this)">
+  <div class="gallery-panel" id="gallery-galipette">
+    <div class="gallery-inner">
       <img src="images/galipette/DSC06991.jpg" alt="Galipette" loading="lazy"/>
-      <div class="work-item-label"><h3>Galipette</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/galipette/Galipette-StopMotion-Mirror_4k-song2-ezgif.com-video-to-gif-converter.gif" alt="Galipette" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-galipette">
-      <div class="gallery-inner">
-        <img src="images/galipette/DSC06991.jpg" alt="Galipette" loading="lazy"/>
-        <img src="images/galipette/galipette-cidre.gif" alt="Galipette" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('galipette',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('galipette',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- MAMA LI -->
-    <div class="work-item" onclick="toggleGallery('mama-li',this)">
+  <div class="gallery-panel" id="gallery-mama-li">
+    <div class="gallery-inner">
       <img src="images/mama-li/Mama Li Jan - Pro-Capture One 1141.jpg" alt="Mama Li" loading="lazy"/>
-      <div class="work-item-label"><h3>Mama Li</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-mama-li">
-      <div class="gallery-inner">
-        <img src="images/mama-li/Mama Li Jan - Pro-Capture One 1141.jpg" alt="Mama Li" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('mama-li',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('mama-li',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- LAAM x OWT -->
-    <div class="work-item" onclick="toggleGallery('laam-owt',this)">
+  <div class="gallery-panel" id="gallery-laam-owt">
+    <div class="gallery-inner">
       <img src="images/laam-owt/DSC04991.jpg" alt="Laam x OWT" loading="lazy"/>
-      <div class="work-item-label"><h3>Laam × OWT</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/laam-owt/DSC04828.jpg" alt="Laam x OWT" loading="lazy"/>
+      <img src="images/laam-owt/DSC04876.jpg" alt="Laam x OWT" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-laam-owt">
-      <div class="gallery-inner">
-        <img src="images/laam-owt/DSC04991.jpg" alt="Laam x OWT" loading="lazy"/>
-        <img src="images/laam-owt/DSC04828.jpg" alt="Laam x OWT" loading="lazy"/>
-        <img src="images/laam-owt/DSC04876.jpg" alt="Laam x OWT" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('laam-owt',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('laam-owt',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- CHABUDDY G x SOBE BURGER -->
-    <div class="work-item" onclick="toggleGallery('chabuddy-sobe',this)">
+  <div class="gallery-panel" id="gallery-chabuddy-sobe">
+    <div class="gallery-inner">
       <img src="images/chabuddy-sobe/SoBe Burger - Chabuddy GDSC02869.jpg" alt="Chabuddy G x SoBe Burger" loading="lazy"/>
-      <div class="work-item-label"><h3>Chabuddy G × SoBe Burger</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/chabuddy-sobe/SoBe Burger - Chabuddy GDSC02796.jpg" alt="Chabuddy G x SoBe Burger" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-chabuddy-sobe">
-      <div class="gallery-inner">
-        <img src="images/chabuddy-sobe/SoBe Burger - Chabuddy GDSC02869.jpg" alt="Chabuddy G x SoBe Burger" loading="lazy"/>
-        <img src="images/chabuddy-sobe/SoBe Burger - Chabuddy GDSC02796.jpg" alt="Chabuddy G x SoBe Burger" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('chabuddy-sobe',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('chabuddy-sobe',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- OWT -->
-    <div class="work-item" onclick="toggleGallery('owt',this)">
+  <div class="gallery-panel" id="gallery-owt">
+    <div class="gallery-inner">
       <img src="images/owt/editied top shadow-6.jpg" alt="OWT" loading="lazy"/>
-      <div class="work-item-label"><h3>OWT</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/owt/DSC09266.jpg" alt="OWT" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-owt">
-      <div class="gallery-inner">
-        <img src="images/owt/editied top shadow-6.jpg" alt="OWT" loading="lazy"/>
-        <img src="images/owt/DSC09266.jpg" alt="OWT" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('owt',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('owt',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- RITZ CRACKERS -->
-    <div class="work-item" onclick="toggleGallery('ritz-crackers',this)">
+  <div class="gallery-panel" id="gallery-ritz-crackers">
+    <div class="gallery-inner">
       <img src="images/ritz-crackers/DSC05988 - edit.png" alt="Ritz Crackers" loading="lazy"/>
-      <div class="work-item-label"><h3>Ritz Crackers</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/ritz-crackers/DSC05705-resized-ezgif.com-video-to-gif-converter.gif" alt="Ritz Crackers" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-ritz-crackers">
-      <div class="gallery-inner">
-        <img src="images/ritz-crackers/DSC05988 - edit.png" alt="Ritz Crackers" loading="lazy"/>
-        <img src="images/ritz-crackers/DSC05705-resized-ezgif.com-video-to-gif-converter.gif" alt="Ritz Crackers" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('ritz-crackers',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('ritz-crackers',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- GALIPETTE CIDRE -->
-    <div class="work-item" onclick="toggleGallery('galipette-cidre',this)">
-      <img src="images/galipette-cidre/spinning-bottle.gif" alt="Galipette Cidre" loading="lazy"/>
-      <div class="work-item-label"><h3>Galipette Cidre</h3></div>
-      <div class="open-indicator">+</div>
+  <div class="gallery-panel" id="gallery-galipette-cidre">
+    <div class="gallery-inner">
+      <img src="images/galipette-cidre/Spingingbottle2-HD.gif" alt="Galipette Cidre" loading="lazy"/>
+      <img src="images/galipette-cidre/Spingingbottle3-ezgif.com-video-to-gif-converter.gif" alt="Galipette Cidre" loading="lazy"/>
+      <img src="images/galipette-cidre/Bubble_1_zoom.gif" alt="Galipette Cidre" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-galipette-cidre">
-      <div class="gallery-inner">
-        <img src="images/galipette-cidre/spinning-bottle" alt="Galipette Cidre" loading="lazy"/>
-        <img src="images/galipette-cidre/spinning-bottle" alt="Galipette Cidre" loading="lazy"/>
-        <img src="images/galipette-cidre/galipette-bubble.gif" alt="Galipette Cidre" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('galipette-cidre',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('galipette-cidre',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- LITTLE BAO BOY -->
-    <div class="work-item" onclick="toggleGallery('little-bao-boy',this)">
+  <div class="gallery-panel" id="gallery-little-bao-boy">
+    <div class="gallery-inner">
       <img src="images/little-bao-boy/Hero 1.jpg" alt="Little Bao Boy" loading="lazy"/>
-      <div class="work-item-label"><h3>Little Bao Boy</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-little-bao-boy">
-      <div class="gallery-inner">
-        <img src="images/little-bao-boy/Hero 1.jpg" alt="Little Bao Boy" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('little-bao-boy',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('little-bao-boy',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- SHOP CUVEE -->
-    <div class="work-item" onclick="toggleGallery('shop-cuvee',this)">
+  <div class="gallery-panel" id="gallery-shop-cuvee">
+    <div class="gallery-inner">
       <img src="images/shop-cuvee/DSC06288.jpg" alt="Shop Cuvée" loading="lazy"/>
-      <div class="work-item-label"><h3>Shop Cuvée</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/shop-cuvee/DSC06237.jpg" alt="Shop Cuvée" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-shop-cuvee">
-      <div class="gallery-inner">
-        <img src="images/shop-cuvee/DSC06288.jpg" alt="Shop Cuvée" loading="lazy"/>
-        <img src="images/shop-cuvee/DSC06237.jpg" alt="Shop Cuvée" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('shop-cuvee',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('shop-cuvee',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- LAAM -->
-    <div class="work-item" onclick="toggleGallery('laam',this)">
+  <div class="gallery-panel" id="gallery-laam">
+    <div class="gallery-inner">
       <img src="images/laam/DSC08396.jpg" alt="Laam" loading="lazy"/>
-      <div class="work-item-label"><h3>Laam</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-laam">
-      <div class="gallery-inner">
-        <img src="images/laam/DSC08396.jpg" alt="Laam" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('laam',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('laam',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- SOBE BURGER -->
-    <div class="work-item" onclick="toggleGallery('sobe-burger',this)">
+  <div class="gallery-panel" id="gallery-sobe-burger">
+    <div class="gallery-inner">
       <img src="images/sobe-burger/SoBe Burger  1879.jpg" alt="SoBe Burger" loading="lazy"/>
-      <div class="work-item-label"><h3>SoBe Burger</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-sobe-burger">
-      <div class="gallery-inner">
-        <img src="images/sobe-burger/SoBe Burger  1879.jpg" alt="SoBe Burger" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('sobe-burger',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('sobe-burger',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- MIKOS GYROS -->
-    <div class="work-item" onclick="toggleGallery('mikos-gyros',this)">
+  <div class="gallery-panel" id="gallery-mikos-gyros">
+    <div class="gallery-inner">
       <img src="images/mikos-gyros/Pro-Capture One 2352.jpg" alt="Mikos Gyros" loading="lazy"/>
-      <div class="work-item-label"><h3>Mikos Gyros</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-mikos-gyros">
-      <div class="gallery-inner">
-        <img src="images/mikos-gyros/Pro-Capture One 2352.jpg" alt="Mikos Gyros" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('mikos-gyros',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('mikos-gyros',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- HOKO -->
-    <div class="work-item" onclick="toggleGallery('hoko',this)">
+  <div class="gallery-panel" id="gallery-hoko">
+    <div class="gallery-inner">
       <img src="images/hoko/IMG_2966-2.jpg" alt="HOKO" loading="lazy"/>
-      <div class="work-item-label"><h3>HOKO</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-hoko">
-      <div class="gallery-inner">
-        <img src="images/hoko/IMG_2966-2.jpg" alt="HOKO" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('hoko',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('hoko',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- TOP CUVEE -->
-    <div class="work-item" onclick="toggleGallery('top-cuvee',this)">
+  <div class="gallery-panel" id="gallery-top-cuvee">
+    <div class="gallery-inner">
       <img src="images/top-cuvee/DSC06397.jpg" alt="Top Cuvée" loading="lazy"/>
-      <div class="work-item-label"><h3>Top Cuvée</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/top-cuvee/DSC06477.jpg" alt="Top Cuvée" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-top-cuvee">
-      <div class="gallery-inner">
-        <img src="images/top-cuvee/DSC06397.jpg" alt="Top Cuvée" loading="lazy"/>
-        <img src="images/top-cuvee/DSC06477.jpg" alt="Top Cuvée" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('top-cuvee',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('top-cuvee',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- EAT YOUR GREENS -->
-    <div class="work-item" onclick="toggleGallery('eat-your-greens',this)">
+  <div class="gallery-panel" id="gallery-eat-your-greens">
+    <div class="gallery-inner">
       <img src="images/eat-your-greens/DSC03017-2.jpg" alt="Eat Your Greens" loading="lazy"/>
-      <div class="work-item-label"><h3>Eat Your Greens</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/eat-your-greens/DSC02996.jpg" alt="Eat Your Greens" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-eat-your-greens">
-      <div class="gallery-inner">
-        <img src="images/eat-your-greens/DSC03017-2.jpg" alt="Eat Your Greens" loading="lazy"/>
-        <img src="images/eat-your-greens/DSC02996.jpg" alt="Eat Your Greens" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('eat-your-greens',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('eat-your-greens',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- BROWN AND BLOND -->
-    <div class="work-item" onclick="toggleGallery('brown-and-blond',this)">
+  <div class="gallery-panel" id="gallery-brown-and-blond">
+    <div class="gallery-inner">
       <img src="images/brown-and-blond/editied top shadow-7.jpg" alt="Brown & Blond" loading="lazy"/>
-      <div class="work-item-label"><h3>Brown &amp; Blond</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/brown-and-blond/DSC02430-2.jpg" alt="Brown & Blond" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-brown-and-blond">
-      <div class="gallery-inner">
-        <img src="images/brown-and-blond/editied top shadow-7.jpg" alt="Brown & Blond" loading="lazy"/>
-        <img src="images/brown-and-blond/DSC02430-2.jpg" alt="Brown & Blond" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('brown-and-blond',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('brown-and-blond',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- POCO -->
-    <div class="work-item" onclick="toggleGallery('poco',this)">
+  <div class="gallery-panel" id="gallery-poco">
+    <div class="gallery-inner">
       <img src="images/poco/DSC01729 - espresso.jpg" alt="POCO" loading="lazy"/>
-      <div class="work-item-label"><h3>POCO</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/poco/DSC01813-2.jpg" alt="POCO" loading="lazy"/>
+      <img src="images/poco/DSC01712.jpg" alt="POCO" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-poco">
-      <div class="gallery-inner">
-        <img src="images/poco/DSC01729 - espresso.jpg" alt="POCO" loading="lazy"/>
-        <img src="images/poco/DSC01813-2.jpg" alt="POCO" loading="lazy"/>
-        <img src="images/poco/DSC01712.jpg" alt="POCO" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('poco',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('poco',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- ICHI SUSHI -->
-    <div class="work-item" onclick="toggleGallery('ichi-sushi',this)">
+  <div class="gallery-panel" id="gallery-ichi-sushi">
+    <div class="gallery-inner">
       <img src="images/ichi-sushi/DSC01488.JPG.jpg" alt="Ichi Sushi" loading="lazy"/>
-      <div class="work-item-label"><h3>Ichi Sushi</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-ichi-sushi">
-      <div class="gallery-inner">
-        <img src="images/ichi-sushi/DSC01488.JPG.jpg" alt="Ichi Sushi" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('ichi-sushi',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('ichi-sushi',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- OWT LEEDS -->
-    <div class="work-item" onclick="toggleGallery('owt-leeds',this)">
+  <div class="gallery-panel" id="gallery-owt-leeds">
+    <div class="gallery-inner">
       <img src="images/owt-leeds/DSC09266.jpg" alt="OWT Leeds" loading="lazy"/>
-      <div class="work-item-label"><h3>OWT Leeds</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-owt-leeds">
-      <div class="gallery-inner">
-        <img src="images/owt-leeds/DSC09266.jpg" alt="OWT Leeds" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('owt-leeds',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('owt-leeds',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- FIKA NORTH -->
-    <div class="work-item" onclick="toggleGallery('fika-north',this)">
+  <div class="gallery-panel" id="gallery-fika-north">
+    <div class="gallery-inner">
       <img src="images/fika-north/DSC02889.jpg" alt="Fika North" loading="lazy"/>
-      <div class="work-item-label"><h3>Fika North</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-fika-north">
-      <div class="gallery-inner">
-        <img src="images/fika-north/DSC02889.jpg" alt="Fika North" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('fika-north',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('fika-north',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- RIDE AND GRIND -->
-    <div class="work-item" onclick="toggleGallery('ride-and-grind',this)">
+  <div class="gallery-panel" id="gallery-ride-and-grind">
+    <div class="gallery-inner">
       <img src="images/ride-and-grind/editied top shadow-1.jpg" alt="Ride & Grind" loading="lazy"/>
-      <div class="work-item-label"><h3>Ride &amp; Grind</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/ride-and-grind/DSC03494.jpg" alt="Ride & Grind" loading="lazy"/>
+      <img src="images/ride-and-grind/DSC03626.jpg" alt="Ride & Grind" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-ride-and-grind">
-      <div class="gallery-inner">
-        <img src="images/ride-and-grind/editied top shadow-1.jpg" alt="Ride & Grind" loading="lazy"/>
-        <img src="images/ride-and-grind/DSC03494.jpg" alt="Ride & Grind" loading="lazy"/>
-        <img src="images/ride-and-grind/DSC03626.jpg" alt="Ride & Grind" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('ride-and-grind',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('ride-and-grind',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- LOVE FOR MUSHROOM -->
-    <div class="work-item" onclick="toggleGallery('love-for-mushroom',this)">
+  <div class="gallery-panel" id="gallery-love-for-mushroom">
+    <div class="gallery-inner">
       <img src="images/love-for-mushroom/DSC03779-3.jpg" alt="Love for Mushroom" loading="lazy"/>
-      <div class="work-item-label"><h3>Love for Mushroom</h3></div>
-      <div class="open-indicator">+</div>
+      <img src="images/love-for-mushroom/DSC03779-2.jpg" alt="Love for Mushroom" loading="lazy"/>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-love-for-mushroom">
-      <div class="gallery-inner">
-        <img src="images/love-for-mushroom/DSC03779-3.jpg" alt="Love for Mushroom" loading="lazy"/>
-        <img src="images/love-for-mushroom/DSC03779-2.jpg" alt="Love for Mushroom" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('love-for-mushroom',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('love-for-mushroom',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- RIDE AND GRIND COFFEE -->
-    <div class="work-item" onclick="toggleGallery('ride-and-grind-coffee',this)">
+  <div class="gallery-panel" id="gallery-ride-and-grind-coffee">
+    <div class="gallery-inner">
       <img src="images/ride-and-grind-coffee/editied top shadow-3.jpg" alt="Ride & Grind Coffee" loading="lazy"/>
-      <div class="work-item-label"><h3>Ride &amp; Grind Coffee</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-ride-and-grind-coffee">
-      <div class="gallery-inner">
-        <img src="images/ride-and-grind-coffee/editied top shadow-3.jpg" alt="Ride & Grind Coffee" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('ride-and-grind-coffee',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('ride-and-grind-coffee',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- WAITROSE -->
-    <div class="work-item" onclick="toggleGallery('waitrose',this)">
+  <div class="gallery-panel" id="gallery-waitrose">
+    <div class="gallery-inner">
       <img src="images/waitrose/1713613865794-eacfc688-77c4-4b77-92aa-62c7117eaad6_1.jpg" alt="Waitrose Magazine" loading="lazy"/>
-      <div class="work-item-label"><h3>Waitrose Magazine</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-waitrose">
-      <div class="gallery-inner">
-        <img src="images/waitrose/1713613865794-eacfc688-77c4-4b77-92aa-62c7117eaad6_1.jpg" alt="Waitrose Magazine" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('waitrose',null,true)">&#8593; Close</div>
-    </div>
+    <div class="gallery-close" onclick="toggleGallery('waitrose',null,true)">&#8593; Close</div>
+  </div>
 
-    <!-- CASA COFFEE -->
-    <div class="work-item" onclick="toggleGallery('casa-coffee',this)">
+  <div class="gallery-panel" id="gallery-casa-coffee">
+    <div class="gallery-inner">
       <img src="images/casa-coffee/DSC04092-3.jpg" alt="Casa Coffee" loading="lazy"/>
-      <div class="work-item-label"><h3>Casa Coffee</h3></div>
-      <div class="open-indicator">+</div>
+      <!-- ADD MORE -->
     </div>
-    <div class="gallery-panel" id="gallery-casa-coffee">
-      <div class="gallery-inner">
-        <img src="images/casa-coffee/DSC04092-3.jpg" alt="Casa Coffee" loading="lazy"/>
-        <!-- ADD MORE -->
-      </div>
-      <div class="gallery-close" onclick="toggleGallery('casa-coffee',null,true)">&#8593; Close</div>
-    </div>
-
-  </div><!-- end .work-grid -->
+    <div class="gallery-close" onclick="toggleGallery('casa-coffee',null,true)">&#8593; Close</div>
+  </div>
 
   <footer class="site-footer">
     <div><h4>About</h4><p>Food photographers and content creators working with brands and restaurants to capture stories. Specialising in art direction, photography styling, and animated content for web and social media.</p></div>
     <div><h4>Follow</h4><a href="https://www.instagram.com/clawsimage" target="_blank" rel="noopener">Instagram</a><a href="https://www.behance.net/clawsimage" target="_blank" rel="noopener">Behance</a></div>
-    <div><h4>Contact</h4><p>London · Leeds · Yorkshire</p><a href="mailto:claudiayitaklawrence@gmail.com">claudiayitaklawrence@gmail.com</a><a href="https://wa.me/message/SMGCFNEACSWMI1" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+    <div><h4>Contact</h4><p>London · Leeds · Yorkshire</p><a href="/cdn-cgi/l/email-protection#accfc0cdd9c8c5cdd5c5d8cdc7c0cddbdec9c2cfc9eccbc1cdc5c082cfc3c1"><span class="__cf_email__" data-cfemail="ed8e818c9889848c9484998c86818c9a9f88838e88ad8a808c8481c38e8280">[email&#160;protected]</span></a><a href="https://wa.me/message/SMGCFNEACSWMI1" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
   </footer>
 </div>
 
@@ -569,7 +447,7 @@
     <h1>Capturing<br/>stories</h1>
     <p class="bio">Claudia is a food photographer and content creator who works with brands and restaurants to capture stories through photography. Specialising in art direction, photography styling, and creating animated content for web and social media.<br/><br/>Get in touch to discuss your project.</p>
     <div class="contact-details">
-      <div class="section"><h4>Email</h4><a href="mailto:claudiayitaklawrence@gmail.com">claudiayitaklawrence@gmail.com</a></div>
+      <div class="section"><h4>Email</h4><a href="/cdn-cgi/l/email-protection#66050a0713020f071f0f12070d0a0711140308050326010b070f0a4805090b"><span class="__cf_email__" data-cfemail="22414e4357464b435b4b5643494e435550474c414762454f434b4e0c414d4f">[email&#160;protected]</span></a></div>
       <div class="section"><h4>WhatsApp</h4><a href="https://wa.me/message/SMGCFNEACSWMI1" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
       <div class="section"><h4>Location</h4><p>London · Leeds · Yorkshire</p></div>
       <div class="section"><h4>Follow</h4><a href="https://www.instagram.com/clawsimage" target="_blank" rel="noopener">Instagram</a><a href="https://www.behance.net/clawsimage" target="_blank" rel="noopener">Behance</a></div>
@@ -601,7 +479,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
@@ -618,22 +496,3 @@
     if (!panel) return;
     const isOpen = panel.classList.contains('open');
     if (openGallery && openGallery !== panel) {
-      openGallery.classList.remove('open');
-      if (openThumb) openThumb.classList.remove('open');
-    }
-    if (isOpen || forceClose) {
-      panel.classList.remove('open');
-      if (thumbEl) thumbEl.classList.remove('open');
-      openGallery = null; openThumb = null;
-    } else {
-      panel.classList.add('open');
-      if (thumbEl) thumbEl.classList.add('open');
-      openGallery = panel; openThumb = thumbEl;
-      setTimeout(() => {
-        if (thumbEl) thumbEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 80);
-    }
-  }
-</script>
-</body>
-</html>
