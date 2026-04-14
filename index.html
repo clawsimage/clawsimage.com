@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>claws Image</title>
+<title>claws Image — Food Photographer & Content Creator</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -33,19 +33,8 @@ nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to b
 .wi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
 .wi:hover img{transform:scale(1.05)}
 .wi .lbl{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 50%);display:flex;align-items:flex-end;padding:1rem;opacity:0;transition:opacity .3s}
-.wi:hover .lbl,.wi.open .lbl{opacity:1}
+.wi:hover .lbl{opacity:1}
 .wi .lbl h3{font-family:var(--serif);font-weight:300;font-style:italic;font-size:1.1rem;color:var(--white)}
-.wi .plus{position:absolute;top:.8rem;right:.8rem;width:24px;height:24px;border:1px solid rgba(255,255,255,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:14px;opacity:0;transition:opacity .3s,transform .3s}
-.wi:hover .plus,.wi.open .plus{opacity:1}
-.wi.open .plus{transform:rotate(45deg)}
-.gpanel{visibility:hidden;height:0;overflow:hidden;background:#0f0f0f}
-.gpanel.open{visibility:visible;height:auto;overflow:visible}
-.ginner{columns:3;column-gap:3px;padding:3px 0}
-@media(max-width:768px){.ginner{columns:2}}
-@media(max-width:480px){.ginner{columns:1}}
-.ginner img{width:100%;display:block;margin-bottom:3px;break-inside:avoid}
-.gclose{padding:1rem;text-align:center;cursor:pointer;color:var(--mid);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.06)}
-.gclose:hover{color:var(--white)}
 #page-contact{padding-top:7rem;display:none}
 #page-contact.active{display:grid;grid-template-columns:1fr 1fr}
 @media(max-width:768px){#page-contact.active{display:block}}
@@ -115,59 +104,33 @@ nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to b
 </div>
 <div id="page-work" class="page">
 <div class="wgrid">
-<div class="wi" onclick="tog('foh',this)"><img src="images/friends-of-ham/DSC04552.jpg" loading="lazy"/><div class="lbl"><h3>Friends of Ham</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('gal',this)"><img src="images/galipette/DSC06991.jpg" loading="lazy"/><div class="lbl"><h3>Galipette</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('mli',this)"><img src="images/mama-li/Mama%20Li%20Jan%20-%20Pro-Capture%20One%201141.jpg" loading="lazy"/><div class="lbl"><h3>Mama Li</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('low',this)"><img src="images/laam-owt/DSC04991.jpg" loading="lazy"/><div class="lbl"><h3>Laam x OWT</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('csb',this)"><img src="images/chabuddy-sobe/SoBe%20Burger%20-%20Chabuddy%20GDSC02869.jpg" loading="lazy"/><div class="lbl"><h3>Chabuddy G x SoBe Burger</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('owt',this)"><img src="images/owt/editied%20top%20shadow-6.jpg" loading="lazy"/><div class="lbl"><h3>OWT</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('rit',this)"><img src="images/ritz-crackers/DSC05988%20-%20edit.png" loading="lazy"/><div class="lbl"><h3>Ritz Crackers</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('gcr',this)"><img src="images/galipette-cidre/Spingingbottle3-ezgif.com-video-to-gif-converter.gif" loading="lazy"/><div class="lbl"><h3>Galipette Cidre</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('lbb',this)"><img src="images/little-bao-boy/Hero%201.jpg" loading="lazy"/><div class="lbl"><h3>Little Bao Boy</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('scu',this)"><img src="images/shop-cuvee/DSC06288.jpg" loading="lazy"/><div class="lbl"><h3>Shop Cuvee</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('lam',this)"><img src="images/laam/DSC08396.jpg" loading="lazy"/><div class="lbl"><h3>Laam</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('sob',this)"><img src="images/sobe-burger/SoBe%20Burger%201879.jpg" loading="lazy"/><div class="lbl"><h3>SoBe Burger</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('mik',this)"><img src="images/mikos-gyros/Pro-Capture%20One%202352.jpg" loading="lazy"/><div class="lbl"><h3>Mikos Gyros</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('hok',this)"><img src="images/hoko/IMG_2966-2.jpg" loading="lazy"/><div class="lbl"><h3>HOKO</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('tcu',this)"><img src="images/top-cuvee/DSC06397.jpg" loading="lazy"/><div class="lbl"><h3>Top Cuvee</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('eyg',this)"><img src="images/eat-your-greens/DSC03017-2.jpg" loading="lazy"/><div class="lbl"><h3>Eat Your Greens</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('bnb',this)"><img src="images/brown-and-blond/editied%20top%20shadow-7.jpg" loading="lazy"/><div class="lbl"><h3>Brown and Blond</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('poc',this)"><img src="images/poco/DSC01729%20-%20espresso.jpg" loading="lazy"/><div class="lbl"><h3>POCO</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('ich',this)"><img src="images/ichi-sushi/DSC01488.JPG.jpg" loading="lazy"/><div class="lbl"><h3>Ichi Sushi</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('owl',this)"><img src="images/owt-leeds/DSC09266.jpg" loading="lazy"/><div class="lbl"><h3>OWT Leeds</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('fik',this)"><img src="images/fika-north/DSC02889.jpg" loading="lazy"/><div class="lbl"><h3>Fika North</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('rag',this)"><img src="images/ride-and-grind/editied%20top%20shadow-1.jpg" loading="lazy"/><div class="lbl"><h3>Ride and Grind</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('lfm',this)"><img src="images/love-for-mushroom/DSC03779-3.jpg" loading="lazy"/><div class="lbl"><h3>Love for Mushroom</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('rgc',this)"><img src="images/ride-and-grind-coffee/editied%20top%20shadow-3.jpg" loading="lazy"/><div class="lbl"><h3>Ride and Grind Coffee</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('wai',this)"><img src="images/waitrose/1713613865794-eacfc688-77c4-4b77-92aa-62c7117eaad6_1.jpg" loading="lazy"/><div class="lbl"><h3>Waitrose Magazine</h3></div><div class="plus">+</div></div>
-<div class="wi" onclick="tog('cas',this)"><img src="images/casa-coffee/DSC04092-3.jpg" loading="lazy"/><div class="lbl"><h3>Casa Coffee</h3></div><div class="plus">+</div></div>
+<a href="projects/friends-of-ham.html" class="wi"><img src="images/friends-of-ham/DSC04552.jpg" loading="lazy"/><div class="lbl"><h3>Friends of Ham</h3></div></a>
+<a href="projects/galipette.html" class="wi"><img src="images/galipette/DSC06991.jpg" loading="lazy"/><div class="lbl"><h3>Galipette</h3></div></a>
+<a href="projects/mama-li.html" class="wi"><img src="images/mama-li/Mama%20Li%20Jan%20-%20Pro-Capture%20One%201141.jpg" loading="lazy"/><div class="lbl"><h3>Mama Li</h3></div></a>
+<a href="projects/laam-owt.html" class="wi"><img src="images/laam-owt/DSC04991.jpg" loading="lazy"/><div class="lbl"><h3>Laam x OWT</h3></div></a>
+<a href="projects/chabuddy-sobe.html" class="wi"><img src="images/chabuddy-sobe/SoBe%20Burger%20-%20Chabuddy%20GDSC02869.jpg" loading="lazy"/><div class="lbl"><h3>Chabuddy G x SoBe Burger</h3></div></a>
+<a href="projects/owt.html" class="wi"><img src="images/owt/editied%20top%20shadow-6.jpg" loading="lazy"/><div class="lbl"><h3>OWT</h3></div></a>
+<a href="projects/ritz-crackers.html" class="wi"><img src="images/ritz-crackers/DSC05988%20-%20edit.png" loading="lazy"/><div class="lbl"><h3>Ritz Crackers</h3></div></a>
+<a href="projects/galipette-cidre.html" class="wi"><img src="images/galipette-cidre/Spingingbottle3-ezgif.com-video-to-gif-converter.gif" loading="lazy"/><div class="lbl"><h3>Galipette Cidre</h3></div></a>
+<a href="projects/little-bao-boy.html" class="wi"><img src="images/little-bao-boy/Hero%201.jpg" loading="lazy"/><div class="lbl"><h3>Little Bao Boy</h3></div></a>
+<a href="projects/shop-cuvee.html" class="wi"><img src="images/shop-cuvee/DSC06288.jpg" loading="lazy"/><div class="lbl"><h3>Shop Cuvee</h3></div></a>
+<a href="projects/laam.html" class="wi"><img src="images/laam/DSC08396.jpg" loading="lazy"/><div class="lbl"><h3>Laam</h3></div></a>
+<a href="projects/sobe-burger.html" class="wi"><img src="images/sobe-burger/SoBe%20Burger%201879.jpg" loading="lazy"/><div class="lbl"><h3>SoBe Burger</h3></div></a>
+<a href="projects/mikos-gyros.html" class="wi"><img src="images/mikos-gyros/Pro-Capture%20One%202352.jpg" loading="lazy"/><div class="lbl"><h3>Mikos Gyros</h3></div></a>
+<a href="projects/hoko.html" class="wi"><img src="images/hoko/IMG_2966-2.jpg" loading="lazy"/><div class="lbl"><h3>HOKO</h3></div></a>
+<a href="projects/top-cuvee.html" class="wi"><img src="images/top-cuvee/DSC06397.jpg" loading="lazy"/><div class="lbl"><h3>Top Cuvee</h3></div></a>
+<a href="projects/eat-your-greens.html" class="wi"><img src="images/eat-your-greens/DSC03017-2.jpg" loading="lazy"/><div class="lbl"><h3>Eat Your Greens</h3></div></a>
+<a href="projects/brown-and-blond.html" class="wi"><img src="images/brown-and-blond/editied%20top%20shadow-7.jpg" loading="lazy"/><div class="lbl"><h3>Brown and Blond</h3></div></a>
+<a href="projects/poco.html" class="wi"><img src="images/poco/DSC01729%20-%20espresso.jpg" loading="lazy"/><div class="lbl"><h3>POCO</h3></div></a>
+<a href="projects/ichi-sushi.html" class="wi"><img src="images/ichi-sushi/DSC01488.JPG.jpg" loading="lazy"/><div class="lbl"><h3>Ichi Sushi</h3></div></a>
+<a href="projects/owt-leeds.html" class="wi"><img src="images/owt-leeds/DSC09266.jpg" loading="lazy"/><div class="lbl"><h3>OWT Leeds</h3></div></a>
+<a href="projects/fika-north.html" class="wi"><img src="images/fika-north/DSC02889.jpg" loading="lazy"/><div class="lbl"><h3>Fika North</h3></div></a>
+<a href="projects/ride-and-grind.html" class="wi"><img src="images/ride-and-grind/editied%20top%20shadow-1.jpg" loading="lazy"/><div class="lbl"><h3>Ride and Grind</h3></div></a>
+<a href="projects/love-for-mushroom.html" class="wi"><img src="images/love-for-mushroom/DSC03779-3.jpg" loading="lazy"/><div class="lbl"><h3>Love for Mushroom</h3></div></a>
+<a href="projects/ride-and-grind-coffee.html" class="wi"><img src="images/ride-and-grind-coffee/editied%20top%20shadow-3.jpg" loading="lazy"/><div class="lbl"><h3>Ride and Grind Coffee</h3></div></a>
+<a href="projects/waitrose.html" class="wi"><img src="images/waitrose/1713613865794-eacfc688-77c4-4b77-92aa-62c7117eaad6_1.jpg" loading="lazy"/><div class="lbl"><h3>Waitrose Magazine</h3></div></a>
+<a href="projects/casa-coffee.html" class="wi"><img src="images/casa-coffee/DSC04092-3.jpg" loading="lazy"/><div class="lbl"><h3>Casa Coffee</h3></div></a>
 </div>
-<div class="gpanel" id="g-foh"><div class="ginner"><img src="images/friends-of-ham/DSC04552.jpg" loading="lazy"/><img src="images/friends-of-ham/DSC04515.jpg" loading="lazy"/><img src="images/friends-of-ham/DSC04563.jpg" loading="lazy"/><img src="images/friends-of-ham/DSC04598.jpg" loading="lazy"/><img src="images/friends-of-ham/DSC02713.jpg" loading="lazy"/><img src="images/friends-of-ham/DSC02725.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('foh')">^ Close</div></div>
-<div class="gpanel" id="g-gal"><div class="ginner"><img src="images/galipette/DSC06991.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('gal')">^ Close</div></div>
-<div class="gpanel" id="g-mli"><div class="ginner"><img src="images/mama-li/Mama%20Li%20Jan%20-%20Pro-Capture%20One%201141.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('mli')">^ Close</div></div>
-<div class="gpanel" id="g-low"><div class="ginner"><img src="images/laam-owt/DSC04991.jpg" loading="lazy"/><img src="images/laam-owt/DSC04828.jpg" loading="lazy"/><img src="images/laam-owt/DSC04876.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('low')">^ Close</div></div>
-<div class="gpanel" id="g-csb"><div class="ginner"><img src="images/chabuddy-sobe/SoBe%20Burger%20-%20Chabuddy%20GDSC02869.jpg" loading="lazy"/><img src="images/chabuddy-sobe/SoBe%20Burger%20-%20Chabuddy%20GDSC02796.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('csb')">^ Close</div></div>
-<div class="gpanel" id="g-owt"><div class="ginner"><img src="images/owt/editied%20top%20shadow-6.jpg" loading="lazy"/><img src="images/owt/DSC09266.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('owt')">^ Close</div></div>
-<div class="gpanel" id="g-rit"><div class="ginner"><img src="images/ritz-crackers/DSC05988%20-%20edit.png" loading="lazy"/></div><div class="gclose" onclick="cls('rit')">^ Close</div></div>
-<div class="gpanel" id="g-gcr"><div class="ginner"><img src="images/galipette-cidre/Spingingbottle2-HD.gif" loading="lazy"/><img src="images/galipette-cidre/Bubble_1_zoom.gif" loading="lazy"/></div><div class="gclose" onclick="cls('gcr')">^ Close</div></div>
-<div class="gpanel" id="g-lbb"><div class="ginner"><img src="images/little-bao-boy/Hero%201.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('lbb')">^ Close</div></div>
-<div class="gpanel" id="g-scu"><div class="ginner"><img src="images/shop-cuvee/DSC06288.jpg" loading="lazy"/><img src="images/shop-cuvee/DSC06237.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('scu')">^ Close</div></div>
-<div class="gpanel" id="g-lam"><div class="ginner"><img src="images/laam/DSC08396.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('lam')">^ Close</div></div>
-<div class="gpanel" id="g-sob"><div class="ginner"><img src="images/sobe-burger/SoBe%20Burger%201879.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('sob')">^ Close</div></div>
-<div class="gpanel" id="g-mik"><div class="ginner"><img src="images/mikos-gyros/Pro-Capture%20One%202352.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('mik')">^ Close</div></div>
-<div class="gpanel" id="g-hok"><div class="ginner"><img src="images/hoko/IMG_2966-2.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('hok')">^ Close</div></div>
-<div class="gpanel" id="g-tcu"><div class="ginner"><img src="images/top-cuvee/DSC06397.jpg" loading="lazy"/><img src="images/top-cuvee/DSC06477.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('tcu')">^ Close</div></div>
-<div class="gpanel" id="g-eyg"><div class="ginner"><img src="images/eat-your-greens/DSC03017-2.jpg" loading="lazy"/><img src="images/eat-your-greens/DSC02996.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('eyg')">^ Close</div></div>
-<div class="gpanel" id="g-bnb"><div class="ginner"><img src="images/brown-and-blond/editied%20top%20shadow-7.jpg" loading="lazy"/><img src="images/brown-and-blond/DSC02430-2.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('bnb')">^ Close</div></div>
-<div class="gpanel" id="g-poc"><div class="ginner"><img src="images/poco/DSC01729%20-%20espresso.jpg" loading="lazy"/><img src="images/poco/DSC01813-2.jpg" loading="lazy"/><img src="images/poco/DSC01712.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('poc')">^ Close</div></div>
-<div class="gpanel" id="g-ich"><div class="ginner"><img src="images/ichi-sushi/DSC01488.JPG.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('ich')">^ Close</div></div>
-<div class="gpanel" id="g-owl"><div class="ginner"><img src="images/owt-leeds/DSC09266.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('owl')">^ Close</div></div>
-<div class="gpanel" id="g-fik"><div class="ginner"><img src="images/fika-north/DSC02889.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('fik')">^ Close</div></div>
-<div class="gpanel" id="g-rag"><div class="ginner"><img src="images/ride-and-grind/editied%20top%20shadow-1.jpg" loading="lazy"/><img src="images/ride-and-grind/DSC03494.jpg" loading="lazy"/><img src="images/ride-and-grind/DSC03626.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('rag')">^ Close</div></div>
-<div class="gpanel" id="g-lfm"><div class="ginner"><img src="images/love-for-mushroom/DSC03779-3.jpg" loading="lazy"/><img src="images/love-for-mushroom/DSC03779-2.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('lfm')">^ Close</div></div>
-<div class="gpanel" id="g-rgc"><div class="ginner"><img src="images/ride-and-grind-coffee/editied%20top%20shadow-3.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('rgc')">^ Close</div></div>
-<div class="gpanel" id="g-wai"><div class="ginner"><img src="images/waitrose/1713613865794-eacfc688-77c4-4b77-92aa-62c7117eaad6_1.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('wai')">^ Close</div></div>
-<div class="gpanel" id="g-cas"><div class="ginner"><img src="images/casa-coffee/DSC04092-3.jpg" loading="lazy"/></div><div class="gclose" onclick="cls('cas')">^ Close</div></div>
 <div class="footer">
 <div><h4>About</h4><p>Food photographers and content creators working with brands and restaurants to capture stories.</p></div>
 <div><h4>Follow</h4><a href="https://www.instagram.com/clawsimage" target="_blank">Instagram</a><a href="https://www.behance.net/clawsimage" target="_blank">Behance</a></div>
@@ -200,10 +163,7 @@ nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to b
 </div>
 </div>
 <script>
-var op=null,ot=null;
 function showPage(n){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});document.getElementById('page-'+n).classList.add('active');window.scrollTo(0,0)}
-function tog(id,el){var p=document.getElementById('g-'+id);if(!p)return;if(op&&op!==p){op.classList.remove('open');if(ot)ot.classList.remove('open')}if(p.classList.contains('open')){p.classList.remove('open');el.classList.remove('open')}else{p.classList.add('open');el.classList.add('open');op=p;ot=el}}
-function cls(id){var p=document.getElementById('g-'+id);if(p)p.classList.remove('open');if(ot)ot.classList.remove('open');op=null;ot=null}
 </script>
 </body>
 </html>
